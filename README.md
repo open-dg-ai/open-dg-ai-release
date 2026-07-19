@@ -162,3 +162,24 @@ Open DG AI is built on the belief that:
 > **Trust in governance systems comes from clarity, evidence, and accountability — not from unchecked automation or ambiguous claims.**
 
 This statement reflects how we design, operate, and evolve the platform.
+
+---
+
+## What is Open DG AI
+
+A **Data Governance platform with full-PDPA compliance operations and AI Governance built in** — compliance-officer-first, multilingual (English + Thai first). It gives DPOs and governance leads one place to run: asset inventory & classification, retention, policies, RoPA, all PDPA data-subject rights (30-day statutory clock), breach notification (72-hour PDPC clock), DPIA, cross-border transfers, processor/DPA registers, AI system registry with risk tiering — with an append-only audit trail enforced at the database level.
+
+**v0.1 target: 2026-10-14.** Distribution: official container images + managed cloud (commercial license above).
+
+## Open artifacts in this repository
+
+| Path | Contents | Status |
+|---|---|---|
+| `profiles/pdpa/` | Thailand PDPA statutory workflows as versioned, machine-readable transition tables (rights requests §30–§36, breach §37(4)) — the exact definitions the platform executes | Published |
+| `schemas/` | Governance data schemas | Coming with v0.1 |
+| `policies/` | Policy examples | Coming with v0.1 |
+| `deploy/` | Deployment manifests (compose/Helm) | Coming with v0.1 |
+
+Contributions to these artifacts are welcome under Apache-2.0 with DCO sign-off — especially additional jurisdiction profiles and translations.
+
+**Not legal advice.** Open DG AI supports compliance operations; it does not guarantee compliance with PDPA, GDPR, or any other law (see the commercial license §3).

@@ -1,0 +1,19 @@
+{
+  "$comment": "Open DG AI open governance artifact (Apache-2.0). PDPA data subject rights workflow (Thailand PDPA §30–§36). Statutory clock: 30 days from receipt; the clock pauses only during identity verification and every pause must be recorded. This is the same versioned transition table the platform executes.",
+  "key": "pdpa.rights_request",
+  "version": 1,
+  "jurisdiction": "TH-PDPA",
+  "legalBasis": ["§30 access/copy", "§31 portability", "§32 objection", "§33 erasure", "§34 restriction", "§35–§36 rectification"],
+  "initial": "received",
+  "terminal": ["closed", "rejected"],
+  "clock": { "kind": "statutory", "durationHours": 720, "pausedIn": ["verifying"] },
+  "transitions": [
+    { "from": "received", "event": "start_verification", "to": "verifying" },
+    { "from": "verifying", "event": "verify", "to": "triage" },
+    { "from": "verifying", "event": "reject_identity", "to": "rejected", "guards": ["rejection_reason_present"] },
+    { "from": "triage", "event": "triage_complete", "to": "fulfilling", "guards": ["affected_assets_linked"] },
+    { "from": "fulfilling", "event": "fulfilled", "to": "responding", "guards": ["evidence_attached"] },
+    { "from": "responding", "event": "responded", "to": "closed" },
+    { "from": "closed", "event": "reopen", "to": "triage" }
+  ]
+}

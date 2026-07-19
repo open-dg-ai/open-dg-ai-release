@@ -1,0 +1,19 @@
+{
+  "$comment": "Open DG AI open governance artifact (Apache-2.0). PDPA personal data breach workflow (Thailand PDPA §37(4)): notify the PDPC without delay and where feasible within 72 hours of awareness; notify data subjects when the breach is likely to result in high risk. The awareness timestamp becomes immutable once the first notification is recorded.",
+  "key": "pdpa.breach",
+  "version": 1,
+  "jurisdiction": "TH-PDPA",
+  "legalBasis": ["§37(4) breach notification"],
+  "initial": "reported",
+  "terminal": ["closed"],
+  "clock": { "kind": "statutory", "durationHours": 72, "pausedIn": [] },
+  "transitions": [
+    { "from": "reported", "event": "begin_assessment", "to": "assessing" },
+    { "from": "assessing", "event": "pdpc_notification_required", "to": "notifying_pdpc" },
+    { "from": "assessing", "event": "no_pdpc_notification", "to": "review", "guards": ["no_notice_rationale_present"] },
+    { "from": "notifying_pdpc", "event": "pdpc_notified", "to": "notifying_subjects", "invariants": ["awareness_locked"] },
+    { "from": "notifying_subjects", "event": "subjects_notified", "to": "review" },
+    { "from": "notifying_subjects", "event": "subjects_not_required", "to": "review", "guards": ["high_risk_test_recorded"] },
+    { "from": "review", "event": "review_complete", "to": "closed" }
+  ]
+}

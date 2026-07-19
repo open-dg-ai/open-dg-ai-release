@@ -1,7 +1,7 @@
 Open DG AI – Commercial Platform License
 Version 1.0
 
-Copyright © [YEAR] Open DG AI.
+Copyright © 2026 Open DG AI.
 All rights reserved.
 
 This license governs the use of the Open DG AI platform, including but not limited to:
